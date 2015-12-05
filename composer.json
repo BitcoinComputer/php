@@ -1,0 +1,22 @@
+{
+  "name": "bitcoincomputer/php",
+  "description": "Php libraries for bitcoin payment requests in the Bitcoin Computer Project.",
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "autoload-dev": {
+    "classmap": [
+      "test/"
+    ]
+  },
+  "require": {
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "phpdocumentor/phpdocumentor": "2.*",
+    "codeclimate/php-test-reporter": "dev-master",
+    "squizlabs/php_codesniffer": "2.*"
+  }
+}

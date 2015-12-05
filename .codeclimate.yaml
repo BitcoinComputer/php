@@ -1,0 +1,5 @@
+languages:
+   PHP: true
+   JavaScript: true
+exclude_paths:
+- "tests/*"
