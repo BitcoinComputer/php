@@ -8,6 +8,12 @@ Bitcoin Computer PHP Library
 Example
 -------
 
+### Install BTC-Channel
+
+Download and install [btc-channel](https://github.com/BitcoinComputer/btc-channel). Be sure to install a specific payment channel adapter. Complete all configuration instructions.
+
+### Download the PHP Bitcoin Computer Library
+
 In your composer.json:
 ```
     {
@@ -16,6 +22,8 @@ In your composer.json:
       }
     }
 ```
+
+### Code
 
 In a page:
 ```
