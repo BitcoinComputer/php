@@ -1,5 +1,5 @@
 {
-  "name": "bitcoincomputer/php",
+  "name": "jaschilz/bitcoincomputer-php",
   "description": "Php libraries for bitcoin payment requests in the Bitcoin Computer Project.",
   "autoload": {
     "classmap": [
