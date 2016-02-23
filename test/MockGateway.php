@@ -39,7 +39,7 @@ class MockGateway extends AbstractGateway
 
     public static function isPaid($requestId)
     {
-        return static::$isPaid;
+        return static::$isPaid === true ? 0 : -1;
     }
 
 }
