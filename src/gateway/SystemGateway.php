@@ -10,15 +10,15 @@ class SystemGateway extends AbstractGateway
      */
     public static function makeRequest($amount)
     {
-        $command = "btc-channel --create -a $amount";
+        $command = "btc-channel --create --amount=$amount";
 
-        $result = exec($command, $output, $returnValue);
+        exec($command, $output, $returnValue);
 
         if ($returnValue !== 0) {
             throw new \RuntimeException("Unexpected error from payment channel: $output");
         }
 
-        return $result;
+        return static::clean($output);
     }
 
     /**
@@ -32,10 +32,10 @@ class SystemGateway extends AbstractGateway
         exec($command, $output, $returnValue);
 
         if ($returnValue !== 0) {
-            throw new \RuntimeException("Unexpected error from payment channel: $output");
+            throw new \RuntimeException("Unexpected error from payment channel: " . static::clean($output));
         }
 
-        return $output;
+        return static::clean($output);
     }
 
     /**
@@ -46,13 +46,25 @@ class SystemGateway extends AbstractGateway
     {
         $command = "btc-channel $requestId --verify-payment";
 
-        $result = exec($command, $output, $returnValue);
+        exec($command, $output, $returnValue);
 
         if ($returnValue !== 0) {
-            throw new \RuntimeException("Unexpected error from payment channel: $output");
+            throw new \RuntimeException("Unexpected error from payment channel: " . static::clean($output));
         }
 
-        return $result;
+        return static::clean($output);
+    }
+
+    /**
+     * @param string|string[] $result
+     * @return string
+     */
+    protected static function clean($result) {
+        if (is_array($result)) {
+            $result = implode(" ", $result);
+        }
+
+        return trim($result);
     }
 
 }

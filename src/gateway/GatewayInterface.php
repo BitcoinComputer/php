@@ -9,10 +9,10 @@ interface GatewayInterface
     public static function getInstance();
 
     /**
-     * @param $amount
+     * @param $satoshi
      * @return string $requestId
      */
-    public static function makeRequest($amount);
+    public static function makeRequest($satoshi);
 
     /**
      * @param $requestId
