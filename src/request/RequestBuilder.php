@@ -6,8 +6,8 @@ use BitcoinComputer\Gateway\SystemGateway;
 
 class RequestBuilder
 {
-    /** @var float */
-    private $amount;
+    /** @var integer */
+    private $satoshi;
 
     /**
      * @return RequestBuilder
@@ -18,12 +18,12 @@ class RequestBuilder
     }
 
     /**
-     * @param float $amount
+     * @param integer $satoshi
      * @return RequestBuilder
      */
-    public function setAmount($amount)
+    public function setSatoshi($satoshi)
     {
-        $this->amount = (float)$amount;
+        $this->satoshi = (integer)$satoshi;
         return $this;
     }
 
@@ -31,11 +31,11 @@ class RequestBuilder
      * @return RequestInterface
      */
     public function build() {
-        if (!isset($this->amount)) {
-            throw new \RuntimeException("You must use ::setAmount(float \$amount) before calling ::build");
+        if (!isset($this->satoshi)) {
+            throw new \RuntimeException("You must use ::setSatoshi(integer \$satoshi) before calling ::build");
         }
 
-        return new Request($this->amount, SystemGateway::getInstance());
+        return new Request($this->satoshi, SystemGateway::getInstance());
     }
 
 }

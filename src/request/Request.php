@@ -6,8 +6,8 @@ use BitcoinComputer\Gateway\GatewayInterface;
 
 class Request implements RequestInterface
 {
-    /** @var float */
-    protected $amount;
+    /** @var integer */
+    protected $satoshi;
 
     /** @var GatewayInterface */
     protected $gateway;
@@ -16,20 +16,21 @@ class Request implements RequestInterface
     protected $requestId;
 
     /**
-     * @param float $amount
+     * @param integer $satoshi
      * @param GatewayInterface $gateway
      */
-    public function __construct($amount, GatewayInterface $gateway) {
+    public function __construct($satoshi, GatewayInterface $gateway) {
         $this->gateway = $gateway;
-        $this->amount = $amount;
+        $this->satoshi = $satoshi;
 
-        $this->requestId = $gateway::makeRequest($amount);
+        $this->requestId = $gateway::makeRequest($satoshi);
     }
 
-    /** @return bool */
+    /** @return boolean */
     public function isPaid() {
         $gateway = $this->gateway;
-        return $gateway::isPaid($this->requestId);
+
+        return (int)$gateway::isPaid($this->requestId) >= 0;
     }
 
     /** @return string */

@@ -7,10 +7,10 @@ use BitcoinComputer\Gateway\GatewayInterface;
 interface RequestInterface
 {
     /**
-     * @param float $amount
+     * @param float $satoshi
      * @param GatewayInterface $gateway
      */
-    public function __construct($amount, GatewayInterface $gateway);
+    public function __construct($satoshi, GatewayInterface $gateway);
 
     /** @return bool */
     public function isPaid();
